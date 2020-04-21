@@ -1,0 +1,20 @@
+(deffunction fibonacci(?x)
+(if (< ?x 2) then
+?x
+else 
+(+ (fibonacci (- ?x 1)) (fibonacci(- ?x 2)))
+)
+)
+
+
+(deffunction listar(?ini ?fin)
+(printout t " " (fibonacci 0) " ")
+(if (< ?ini (- ?fin 1)) then 
+(listar (+ ?ini 1) ?fin)
+else
+(printout t "")
+)
+)
+
+
+(printout t  (fibo 0 10) crlf)

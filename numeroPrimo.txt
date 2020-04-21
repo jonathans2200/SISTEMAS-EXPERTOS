@@ -1,0 +1,13 @@
+(deffunction validarPrimo(?n ?div)
+(if (< (/ ?n 2) ?div) then
+(printout t "ES PRIMO" crlf)
+else 
+(if (= (mod ?n ?div) 0) then
+(printout t "NO ES PRIMO" crlf)
+else
+(validarPrimo ?n (+ ?div 1))
+)
+)
+)
+
+(printout t  (validarPrimo 5 2) crlf)
