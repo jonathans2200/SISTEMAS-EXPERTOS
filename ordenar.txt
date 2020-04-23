@@ -1,0 +1,26 @@
+(defrule inicial
+(vector $?num)
+=>
+(assert (vector-aux ?num)))
+(defrule ordena
+?iter <- (vector-aux $?b ?i ?j&:(< ?j ?i) $?e)
+=>
+(retract ?iter)
+(assert (vector-aux $?b ?j ?i $?e)))
+(defrule final
+(not (vector-aux $?b ?i ?j&:(< ?j ?i) $?e))
+(vector $?num)
+(vector-aux $?resultado)
+=>
+(printout t "La ordenacion de " ?num " es " ?resultado crlf))
+
+
+
+------------------------------
+momento de ejecutar 
+(load "ordenacion.clp")
+(reset)
+(assert (vector 2 6 1 9)
+
+
+
