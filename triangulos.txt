@@ -1,0 +1,57 @@
+(defrule tipo-triangulo-regla
+=>
+(printout t "Tipo de triangulo (1. Lado/ 2. Ángulo)? " crlf)
+(assert (tipo-triangulo(read)))
+)
+(defrule tipo-lados
+(tipo-triangulo 1)
+=>
+(printout t "Ingrese  tres lados " crlf)
+(assert (l1(read)))
+(assert (l2(read)))
+(assert (l3(read)))
+)
+(defrule tipo-angulos
+(tipo-triangulo 2)
+=>
+(printout t "Ingrese los  angulos " crlf)
+(assert (a1(read)))
+(assert (a2(read)))
+(assert (a3(read)))
+)
+(defrule equilatero
+(l1 ?x)
+(l2 ?y)
+(l3 ?z)
+(test (and (= ?x ?y) (= ?x ?z)))
+=>
+(printout t "Es Equilátero" crlf)
+)
+(defrule isosceles
+(l1 ?x)
+(l2 ?y)
+(l3 ?z)
+(test (or (and (= ?y ?z) (!= ?y ?x)) (or (and (= ?x ?y) (!= ?x ?z)) (and (!= ?x
+?y) (= ?x ?z)))))
+=>
+(printout t "Es Triangulo Isosceles" crlf)
+)
+(defrule escaleno
+(l1 ?x)
+(l2 ?y)
+(l3 ?z)
+(test (or (and (!= ?y ?z) (!= ?y ?x)) (or (and (!= ?x ?y) (!= ?x ?z)) (and (!=
+?x ?y) (!= ?x ?z)))))
+=>
+(printout t "Es Triangulo Escaleno" crlf)
+)
+(defrule rectangulo
+(a1 ?x)
+(a2 ?y)
+(a3 ?z)
+(test (and (= 180 (+ ?x (+ ?y ?z))) (or (= ?x 90) (or (= ?y 90) (= ?z 90)))))
+=>
+(printout t "Es Triangulo Rectángulo" crlf)
+)
+
+
